@@ -45,8 +45,8 @@ public class Transaction implements Serializable{
 	@Column(name="tr_remarks")
 	private String remarks;
 	
-	@Column(name="maturity_instructions")
-	private String maturityInstruction;
+	@Column(name="message")
+	private String message;
 	
 	@Column(name="tr_status")
 	private String status;
@@ -95,11 +95,13 @@ public class Transaction implements Serializable{
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	public String getMaturityInstruction() {
-		return maturityInstruction;
+	
+	
+	public String getMessage() {
+		return message;
 	}
-	public void setMaturityInstruction(String maturityInstruction) {
-		this.maturityInstruction = maturityInstruction;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	public String getStatus() {
 		return status;

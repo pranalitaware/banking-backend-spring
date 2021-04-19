@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.model.Login;
 import com.lti.model.LoginStatus;
 import com.lti.model.RegisterStatus;
+import com.lti.model.TransactionStatus;
+import com.lti.model.Transactions;
 import com.lti.entity.Account;
 import com.lti.entity.Registration;
 import com.lti.service.CustomerService;
@@ -61,6 +63,26 @@ public class CustomerController {
 			loginStatus.setStatus(false);
 			loginStatus.setMessage(e.getMessage());		
 			return loginStatus;
+		}
+	}
+	
+	@PostMapping("/impstransaction")
+	public TransactionStatus imps(@RequestBody Transactions transaction) {
+		try {
+			String referenceId = customerService.impsTransaction(transaction);
+			
+			TransactionStatus transactionStatus = new TransactionStatus();
+			transactionStatus.setStatus(true);
+			transactionStatus.setRefernceNo(referenceId);
+			transactionStatus.setMessage("Amount has been debited from your account and will be credited to the receipent's account");
+			
+			return transactionStatus;
+		}
+		catch (ServiceException e) {
+			TransactionStatus transactionStatus = new TransactionStatus();
+			transactionStatus.setStatus(false);
+			transactionStatus.setMessage(e.getMessage());
+			return transactionStatus;
 		}
 	}
 }
