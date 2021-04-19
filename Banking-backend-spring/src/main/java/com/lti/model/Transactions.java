@@ -27,7 +27,6 @@ public class Transactions {
 		this.amount = amount;
 	}
 	
-	
 	public String getMessage() {
 		return message;
 	}

@@ -96,7 +96,6 @@ public class Transaction implements Serializable{
 		this.remarks = remarks;
 	}
 	
-	
 	public String getMessage() {
 		return message;
 	}
